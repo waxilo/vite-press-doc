@@ -15,23 +15,33 @@ export default {
     
     // 社交链接
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/your-username/vite-press-doc' }
+      { icon: 'github', link: 'https://github.com/waxilo/vite-press-doc' }
     ],
     
-    // 侧边栏
-    sidebar: [
-      {
-        text: '指南',
-        items: [
-          { text: '介绍', link: '/guide' }
-        ]
-      }
-    ],
+    // 侧边栏 - 首页不显示侧边栏
+    sidebar: {
+      '/guide': [
+        {
+          items: [
+            { text: '介绍', link: '/guide' },
+            { text: '其他', link: '/other' }
+          ]
+        }
+      ],
+      '/other': [
+        {
+          items: [
+            { text: '介绍', link: '/guide' },
+            { text: '其他', link: '/other' }
+          ]
+        }
+      ]
+    },
     
-    // 页脚
-    footer: {
-      message: '基于 VitePress 构建',
-      copyright: 'Copyright © 2024'
+    // 隐藏底部的上一页下一页导航
+    docFooter: {
+      prev: false,
+      next: false
     }
   }
 }
