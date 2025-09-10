@@ -16,7 +16,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          persist-credentials: false
+          token: ${{ secrets.GITHUB_TOKEN }}  # 使用GitHub提供的令牌
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -30,9 +30,36 @@ jobs:
       - name: Build VitePress site
         run: npm run docs:build
 
+      - name: List build output
+        run: ls -la docs/.vitepress/dist
+
       - name: Deploy to gh-pages branch
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          folder: docs/.vitepress/dist  # 构建输出目录
-          branch: gh-pages  # 部署到的目标分支
-          clean: true  # 清除旧文件
+        run: |
+          # 配置Git
+          git config --global user.name 'GitHub Actions'
+          git config --global user.email 'github-actions@github.com'
+          
+          # 检查构建输出目录是否存在
+          if [ ! -d "docs/.vitepress/dist" ]; then
+            echo "构建输出目录不存在！"
+            exit 1
+          fi
+          
+          # 创建并切换到一个新的gh-pages分支
+          git checkout --orphan gh-pages
+          
+          # 删除工作区中的所有文件
+          git rm -rf .
+          
+          # 复制构建输出到根目录
+          cp -r docs/.vitepress/dist/* .
+          
+          # 添加.nojekyll文件以禁用Jekyll处理
+          touch .nojekyll
+          
+          # 添加所有文件并提交
+          git add .
+          git commit -m "Deploy to GitHub Pages"
+          
+          # 强制推送到gh-pages分支
+          git push -f origin gh-pages
