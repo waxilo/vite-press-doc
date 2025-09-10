@@ -1,24 +1,37 @@
 export default {
   title: 'VitePress文档',
   description: '使用VitePress构建的文档站点',
+  
+  // 重要：设置基础路径，应该与GitHub仓库名称一致
+  // 例如，如果您的仓库名是 'vite-press-doc'，则设置为 '/vite-press-doc/'
+  base: '/vite-press-doc/',
+  
   themeConfig: {
-    // 导航栏配置
+    // 导航栏
     nav: [
       { text: '首页', link: '/' },
-      { text: '指南', link: '/guide' },
+      { text: '指南', link: '/guide' }
     ],
-    // 侧边栏配置
+    
+    // 社交链接
+    socialLinks: [
+      { icon: 'github', link: 'https://github.com/your-username/vite-press-doc' }
+    ],
+    
+    // 侧边栏
     sidebar: [
       {
         text: '指南',
         items: [
-          { text: '介绍', link: '/guide' },
+          { text: '介绍', link: '/guide' }
         ]
       }
     ],
-    // 社交链接
-    socialLinks: [
-      { icon: 'github', link: 'https://github.com/your-username/your-repo' }
-    ]
+    
+    // 页脚
+    footer: {
+      message: '基于 VitePress 构建',
+      copyright: 'Copyright © 2024'
+    }
   }
 }
