@@ -1,65 +1,62 @@
 name: Deploy VitePress site to Pages
 
 on:
+  # 在main分支上的push触发部署
   push:
-    branches:
-      - master  # 当 master 分支有提交时触发
-  workflow_dispatch:  # 允许手动触发
+    branches: [main]
+  # 允许手动触发部署
+  workflow_dispatch:
 
+# 设置GITHUB_TOKEN的权限，以允许部署到GitHub Pages
 permissions:
-  contents: write  # 需要写权限来推送到新分支
+  contents: read
+  pages: write
+  id-token: write
+
+# 只允许一个并发部署，跳过正在运行和最新队列之间的运行队列
+# 但是，不要取消正在进行的运行，因为我们希望允许这些生产部署完成
+concurrency:
+  group: pages
+  cancel-in-progress: false
 
 jobs:
-  build-and-deploy:
+  # 构建工作
+  build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
+      - name: Checkout
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}  # 使用GitHub提供的令牌
-
-      - name: Setup Node.js
+          fetch-depth: 0 # 如果未来需要使用git历史，请不要省略此设置
+      
+      - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 18
           cache: npm
-
+      
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+      
       - name: Install dependencies
-        run: npm install
-
-      - name: Build VitePress site
+        run: npm ci
+      
+      - name: Build with VitePress
         run: npm run docs:build
+      
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs/.vitepress/dist
 
-      - name: List build output
-        run: ls -la docs/.vitepress/dist
-
-      - name: Deploy to gh-pages branch
-        run: |
-          # 配置Git
-          git config --global user.name 'GitHub Actions'
-          git config --global user.email 'github-actions@github.com'
-          
-          # 检查构建输出目录是否存在
-          if [ ! -d "docs/.vitepress/dist" ]; then
-            echo "构建输出目录不存在！"
-            exit 1
-          fi
-          
-          # 创建并切换到一个新的gh-pages分支
-          git checkout --orphan gh-pages
-          
-          # 删除工作区中的所有文件
-          git rm -rf .
-          
-          # 复制构建输出到根目录
-          cp -r docs/.vitepress/dist/* .
-          
-          # 添加.nojekyll文件以禁用Jekyll处理
-          touch .nojekyll
-          
-          # 添加所有文件并提交
-          git add .
-          git commit -m "Deploy to GitHub Pages"
-          
-          # 强制推送到gh-pages分支
-          git push -f origin gh-pages
+  # 部署工作
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
