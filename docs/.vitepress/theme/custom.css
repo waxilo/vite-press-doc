@@ -2,6 +2,6 @@
   display: none;
 }
 
-.VPDoc.has-aside .content-container[data-v-10119189] {
-    max-width: none;
+.VPDoc.has-aside .content-container {
+    max-width: none !important;
 }
