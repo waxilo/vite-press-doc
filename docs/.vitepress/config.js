@@ -4,7 +4,7 @@ export default {
   
   // 重要：设置基础路径，应该与GitHub仓库名称一致
   // 例如，如果您的仓库名是 'vite-press-doc'，则设置为 '/vite-press-doc/'
-  base: '/vite-press-doc/',
+  base: '/wxl-doc/',
   
   themeConfig: {
     // 导航栏
