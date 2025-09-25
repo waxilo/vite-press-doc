@@ -20,7 +20,7 @@
 </template>
 
 <script setup>
-// Home 组件逻辑
+// Home 组件逻辑 - 现在认证由全局Layout控制
 </script>
 
 <style scoped>

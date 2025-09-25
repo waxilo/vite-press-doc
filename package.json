@@ -16,6 +16,7 @@
     "vitepress": "^1.6.4"
   },
   "dependencies": {
+    "js-md5": "^0.8.3",
     "vue": "^3.5.21"
   }
 }

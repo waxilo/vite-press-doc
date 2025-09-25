@@ -9,10 +9,8 @@ export default {
   themeConfig: {
     // 导航栏
     nav: [
-      { text: '首页', link: '/' },
+      { text: '首页', link: '/doc/other/' },
       { text: '面经', link: '/doc/dev/' },
-      { text: '其他', link: '/doc/other/' },
-      
     ],
     
     // 社交链接
@@ -20,8 +18,18 @@ export default {
       { icon: 'github', link: 'https://github.com/waxilo/vite-press-doc' }
     ],
     
-    // 侧边栏 - 首页不显示侧边栏
+    // 侧边栏 - 首页显示other目录的侧边栏
     sidebar: {
+      '/doc/other/': [
+        {
+          items: [
+            { text: '概述', link: '/doc/other/' },
+            { text: 'VPN', link: '/doc/other/VPN' },
+            { text: '一键激活 JetBrains 全家桶', link: '/doc/other/一键激活 JetBrains 全家桶' },
+            { text: 'Mac Idea 最新版激活', link: '/doc/other/Mac Idea 最新版激活' }
+          ]
+        }
+      ],
       '/doc/dev': [
         {
           items: [
@@ -33,16 +41,6 @@ export default {
           ]
         }
       ],
-      '/doc/other': [
-        {
-          items: [
-            { text: '概述', link: '/doc/other/' },
-            { text: 'VPN', link: '/doc/other/VPN' },
-            { text: '一键激活 JetBrains 全家桶', link: '/doc/other/一键激活 JetBrains 全家桶' },
-            { text: 'Mac Idea 最新版激活', link: '/doc/other/Mac Idea 最新版激活' }
-          ]
-        }
-      ]
     },
     
     // 隐藏底部的上一页下一页导航
