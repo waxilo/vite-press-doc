@@ -12,7 +12,6 @@
             class="password-input"
             @keyup.enter="checkPassword"
           />
-          <button @click="checkPassword" class="submit-btn">进入</button>
         </div>
         <p v-if="errorMessage" class="error-message">{{ errorMessage }}</p>
       </div>
@@ -95,6 +94,7 @@ const checkPassword = () => {
   border-radius: 8px;
   font-size: 1rem;
   transition: border-color 0.3s ease;
+  text-align: center;
 }
 
 .password-input:focus {
