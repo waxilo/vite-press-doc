@@ -4,7 +4,5 @@ import './custom.css'
 
 export default {
   ...DefaultTheme,
-  Layout,
-  enhanceApp({ app }) {
-  }
+  Layout
 }

@@ -3,7 +3,7 @@
   <div v-if="!isAuthenticated" class="auth-layout">
     <div class="password-container">
       <div class="password-form">
-        <h1>请输入访问密码</h1>
+        <h1>私人文档</h1>
         <div class="input-group">
           <input 
             v-model="password" 
