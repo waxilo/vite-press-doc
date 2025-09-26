@@ -9,7 +9,7 @@ export default {
   themeConfig: {
     // 导航栏
     nav: [
-      { text: '首页', link: '/doc/other/' },
+      { text: '首页', link: '/' },
       { text: '面经', link: '/doc/dev/' },
     ],
     
@@ -20,13 +20,13 @@ export default {
     
     // 侧边栏 - 首页显示other目录的侧边栏
     sidebar: {
-      '/doc/other/': [
+      '/': [
         {
           items: [
-            { text: '概述', link: '/doc/other/' },
-            { text: 'VPN', link: '/doc/other/VPN' },
-            { text: '一键激活 JetBrains 全家桶', link: '/doc/other/一键激活 JetBrains 全家桶' },
-            { text: 'Mac Idea 最新版激活', link: '/doc/other/Mac Idea 最新版激活' }
+            { text: '概述', link: '/' },
+            { text: 'VPN', link: '/doc/index/VPN' },
+            { text: '一键激活 JetBrains 全家桶', link: '/doc/index/一键激活 JetBrains 全家桶' },
+            { text: 'Mac Idea 最新版激活', link: '/doc/index/Mac Idea 最新版激活' }
           ]
         }
       ],
