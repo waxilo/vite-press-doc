@@ -1,9 +1,14 @@
 <template>
   <!-- 密码验证界面 -->
   <div v-if="!isAuthenticated" class="auth-layout">
+    <!-- 视频背景 -->
+    <video class="video-background" autoplay muted loop playsinline>
+      <source src="/index.mp4" type="video/mp4">
+      您的浏览器不支持视频播放。
+    </video>
+    
     <div class="password-container">
       <div class="password-form">
-        <h1>私人文档</h1>
         <div class="input-group">
           <input 
             v-model="password" 
@@ -53,25 +58,44 @@ const checkPassword = () => {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.video-background {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translateX(-50%) translateY(-50%);
+  z-index: -1;
+  object-fit: cover;
 }
 
 .password-container {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-end;
   width: 100%;
   padding: 2rem;
+  padding-bottom: 10vh;
+  position: relative;
+  z-index: 1;
 }
 
 .password-form {
-  background: white;
+  background: rgba(255, 255, 255, 0.7);
   padding: 3rem 2rem;
   border-radius: 12px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
   max-width: 400px;
   width: 100%;
   text-align: center;
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .password-form h1 {
