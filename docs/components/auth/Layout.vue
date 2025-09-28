@@ -116,16 +116,30 @@ const checkPassword = () => {
 .password-input {
   flex: 1;
   padding: 0.75rem 1rem;
-  border: 2px solid #e1e5e9;
+  border: none;
   border-radius: 8px;
   font-size: 1rem;
-  transition: border-color 0.3s ease;
+  transition: background-color 0.3s ease;
   text-align: center;
+  background: transparent;
+  color: white;
+}
+
+.password-input:hover {
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .password-input:focus {
   outline: none;
-  border-color: #3eaf7c;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.password-input::placeholder {
+  color: #000;
+}
+
+.password-input:placeholder-shown:invalid::placeholder {
+  color: #e74c3c;
 }
 
 .submit-btn {
