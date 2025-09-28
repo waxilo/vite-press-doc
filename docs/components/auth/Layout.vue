@@ -8,17 +8,14 @@
     </video>
     
     <div class="password-container">
-      <div class="password-form">
-        <div class="input-group">
-          <input 
-            v-model="password" 
-            type="password" 
-            placeholder="请输入密码" 
-            class="password-input"
-            @keyup.enter="checkPassword"
-          />
-        </div>
-        <p v-if="errorMessage" class="error-message">{{ errorMessage }}</p>
+      <div class="input-group">
+        <input 
+          v-model="password" 
+          type="password" 
+          :placeholder="errorMessage ? '密码错误，请重新输入' : '请输入密码'" 
+          class="password-input"
+          @keyup.enter="checkPassword"
+        />
       </div>
     </div>
   </div>
@@ -76,14 +73,14 @@ const checkPassword = () => {
 }
 
 .password-container {
+  align-items: center;
+  width: 100%;
+  height: 50vh;
+  position: fixed;
+  bottom: -50px;
+  left: 0;
   display: flex;
   justify-content: center;
-  align-items: flex-end;
-  width: 100%;
-  padding: 2rem;
-  padding-bottom: 10vh;
-  position: relative;
-  z-index: 1;
 }
 
 .password-form {
@@ -108,7 +105,12 @@ const checkPassword = () => {
 .input-group {
   display: flex;
   gap: 0.5rem;
-  margin-bottom: 1rem;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  max-width: 400px;
+  width: 90%;
 }
 
 .password-input {
