@@ -114,10 +114,4 @@ const checkPassword = () => {
   outline: none;
   background: rgba(255, 255, 255, 0.2);
 }
-
-@media (max-width: 768px) {
-  .input-group {
-    flex-direction: column;
-  }
-}
 </style>
