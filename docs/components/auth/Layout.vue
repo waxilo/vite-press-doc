@@ -107,7 +107,7 @@ const checkPassword = () => {
   gap: 0.5rem;
   background: rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(10px);
-  border-radius: 8px;
+  border-radius: 100px;
   border: 1px solid rgba(255, 255, 255, 0.3);
   max-width: 400px;
   width: 90%;
@@ -123,6 +123,7 @@ const checkPassword = () => {
   text-align: center;
   background: transparent;
   color: white;
+  border-radius: 100px;
 }
 
 .password-input:hover {
@@ -132,10 +133,6 @@ const checkPassword = () => {
 .password-input:focus {
   outline: none;
   background: rgba(255, 255, 255, 0.15);
-}
-
-.password-input::placeholder {
-  color: #000;
 }
 
 .password-input:placeholder-shown:invalid::placeholder {
