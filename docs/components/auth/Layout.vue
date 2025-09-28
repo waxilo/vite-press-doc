@@ -83,25 +83,6 @@ const checkPassword = () => {
   justify-content: center;
 }
 
-.password-form {
-  background: rgba(255, 255, 255, 0.7);
-  padding: 3rem 2rem;
-  border-radius: 12px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-  max-width: 400px;
-  width: 100%;
-  text-align: center;
-  backdrop-filter: blur(15px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-}
-
-.password-form h1 {
-  font-size: 1.8rem;
-  margin-bottom: 2rem;
-  color: #333;
-  font-weight: 600;
-}
-
 .input-group {
   display: flex;
   gap: 0.5rem;
@@ -131,41 +112,10 @@ const checkPassword = () => {
 
 .password-input:focus {
   outline: none;
-  background: rgba(255, 255, 255, 0.15);
-}
-
-.password-input:placeholder-shown:invalid::placeholder {
-  color: #e74c3c;
-}
-
-.submit-btn {
-  padding: 0.75rem 1.5rem;
-  background: #3eaf7c;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  white-space: nowrap;
-}
-
-.submit-btn:hover {
-  background: #2d8a5e;
-}
-
-.error-message {
-  color: #e74c3c;
-  font-size: 0.9rem;
-  margin-top: 0.5rem;
+  background: rgba(255, 255, 255, 0.2);
 }
 
 @media (max-width: 768px) {
-  .password-form {
-    padding: 2rem 1.5rem;
-    margin: 0 1rem;
-  }
-  
   .input-group {
     flex-direction: column;
   }
