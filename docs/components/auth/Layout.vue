@@ -108,7 +108,6 @@ const checkPassword = () => {
   background: rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(10px);
   border-radius: 100px;
-  border: 1px solid rgba(255, 255, 255, 0.3);
   max-width: 400px;
   width: 90%;
 }
