@@ -107,11 +107,11 @@ const checkPassword = () => {
 }
 
 .password-input:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.15);
 }
 
 .password-input:focus {
   outline: none;
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.15);
 }
 </style>
