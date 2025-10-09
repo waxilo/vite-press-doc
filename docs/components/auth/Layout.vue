@@ -1,11 +1,8 @@
 <template>
   <!-- 密码验证界面 -->
   <div v-if="!isAuthenticated" class="auth-layout">
-    <!-- 视频背景 -->
-    <video class="video-background" autoplay muted loop playsinline>
-      <source src="/index.mp4" type="video/mp4">
-      您的浏览器不支持视频播放。
-    </video>
+    <!-- 图片背景 -->
+    <img class="image-background" src="/index.png" alt="背景图片">
     
     <div class="password-container">
       <div class="input-group">
@@ -59,15 +56,12 @@ const checkPassword = () => {
   overflow: hidden;
 }
 
-.video-background {
+.image-background {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  min-width: 100%;
-  min-height: 100%;
-  width: auto;
-  height: auto;
-  transform: translateX(-50%) translateY(-50%);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   z-index: -1;
   object-fit: cover;
 }
